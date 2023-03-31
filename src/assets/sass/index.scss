@@ -1,0 +1,12 @@
+@import './utils/reset';
+@import './utils/variables';
+@import './components/layout/header';
+@import './components/dashboard/leftbar';
+@import './components/dashboard/barchart';
+@import './components/dashboard/linechart';
+@import './components/dashboard/main';
+
+* {
+    font-family: $font1;
+}
+
