@@ -8,8 +8,9 @@ import {
     XAxis,
     YAxis,
 } from 'recharts';
+import PropTypes from 'prop-types';
 
-import { customLegendBarChart, CustomTooltip } from './Custom';
+import { customLegendBarChart, CustomTooltipBarChart } from './Custom';
 
 const MyBarChart = (props) => {
     const data = props.data;
@@ -39,7 +40,7 @@ const MyBarChart = (props) => {
                     allowDecimals={false}
                     dx={10}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={<CustomTooltipBarChart />} />
                 <Legend
                     verticalAlign="top"
                     align="right"
@@ -62,6 +63,11 @@ const MyBarChart = (props) => {
             </BarChart>
         </div>
     );
+};
+
+//proptypes
+MyBarChart.propTypes = {
+    data: PropTypes.array.isRequired,
 };
 
 export default MyBarChart;

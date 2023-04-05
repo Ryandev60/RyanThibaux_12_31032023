@@ -5,30 +5,51 @@ import Header from '../components/layout/Header';
 import {
     fetchDataActivity,
     fetchDataAverageSessions,
+    fetchDataPerformance,
+    fetchDataScore,
+    fetchDataNutritionInfo,
 } from '../api/mock/formatData';
 import { useParams } from 'react-router';
 import MyLineChart from '../components/dashboard/MyLineChart';
+import MyRadarChart from '../components/dashboard/MyRadarChart';
+import MyRadialBarChart from '../components/dashboard/MyRadialBarChart';
+import NutritionInfosContainer from '../components/dashboard/NutritionInfosContainer';
 
 const Dashboard = () => {
-    const [dataActivity, setDataActivity] = useState();
-    const [dataAverageSessions, setDataAverageSessions] = useState();
+    const [dataBarChart, setDataBarChart] = useState();
+    const [dataLineChart, setDataLineChart] = useState();
+    const [dataRadarChart, setDataRadarChart] = useState();
+    const [dataRadialBarChart, setDataRadialBarChart] = useState();
+    const [dataNutritionInfo, setDataNutritionInfo] = useState();
+
     const params = useParams();
 
     useEffect(() => {
         const fetchData = () => {
-            setDataActivity(fetchDataActivity(params.userId));
-            setDataAverageSessions(fetchDataAverageSessions(params.userId));
+            setDataBarChart(fetchDataActivity(params.userId));
+            setDataLineChart(fetchDataAverageSessions(params.userId));
+            setDataRadarChart(fetchDataPerformance(params.userId));
+            setDataRadialBarChart(fetchDataScore(params.userId));
+            setDataNutritionInfo(fetchDataNutritionInfo(params.userId));
         };
         fetchData();
-    }, [params.userId]);
+    }, []);
 
     return (
         <div>
             <Header />
             <LeftBar />
             <main>
-                <MyBarChart data={dataActivity} />
-                <MyLineChart data={dataAverageSessions} />
+                {dataBarChart && <MyBarChart data={dataBarChart} />}
+                {dataLineChart && <MyLineChart data={dataLineChart} />}
+                {dataRadarChart && <MyRadarChart data={dataRadarChart} />}
+                {dataRadialBarChart && (
+                    <MyRadialBarChart data={dataRadialBarChart} />
+                )}
+
+                {dataNutritionInfo && (
+                    <NutritionInfosContainer data={dataNutritionInfo} />
+                )}
             </main>
         </div>
     );

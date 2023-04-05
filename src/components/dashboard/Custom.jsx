@@ -11,10 +11,10 @@ export const customLegendBarChart = [
     },
 ];
 
-export const CustomTooltip = ({ active, payload }) => {
+export const CustomTooltipBarChart = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="custom-tooltip">
+            <div className="custom-tooltip-barchart">
                 <p className="label">{`${payload[0].value}kg`}</p>
                 <p className="label">{`${payload[1].value}kCal`}</p>
             </div>
@@ -22,4 +22,35 @@ export const CustomTooltip = ({ active, payload }) => {
     }
 
     return null;
+};
+export const CustomTooltipLineChart = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+        const data = payload[0].payload;
+        return (
+            <div className="custom-tooltip-linechart">
+                <p className="value">{` ${data.sessionLength} min`}</p>
+            </div>
+        );
+    }
+};
+
+export const renderCustomLabel = () => {
+    return (
+        <g>
+            <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="central"
+                style={{ fontSize: '20px', fontWeight: 'bold' }}
+            ></text>
+            <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="central"
+                style={{ fontSize: '14px' }}
+            ></text>
+        </g>
+    );
 };

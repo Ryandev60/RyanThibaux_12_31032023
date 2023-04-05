@@ -1,16 +1,19 @@
 import React from 'react';
 import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
-
+import { CustomTooltipBarChart, CustomTooltipLineChart } from './Custom';
+import PropTypes from 'prop-types';
 const MyLineChart = (props) => {
-    const data = props.data
-    console.log(data);
+    const data = props.data;
     return (
-        <div>
+        <div className="linechart-container">
+            <h2 className="linechart-title">
+                Durée moyenne des <br /> sessions
+            </h2>
             <LineChart
                 width={258}
                 height={263}
                 data={data}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                margin={{ top: 5, right: 14, left: 14, bottom: 5 }}
                 style={{ background: '#ff0000' }}
                 yAxis={{ domain: [0, 100000] }}
             >
@@ -18,15 +21,14 @@ const MyLineChart = (props) => {
                     dataKey="day"
                     tickLine={false}
                     axisLine={false}
-                    stroke="white"
+                    stroke="#ffffff80"
                     tick={{
                         fontSize: 12,
                         fontWeight: 500,
                     }}
                 />
                 <YAxis domain={[0, 'dataMax + 50']} hide={true} />
-                <Tooltip />
-                <Legend />
+                <Tooltip content={<CustomTooltipLineChart />} />
                 <Line
                     type="monotone"
                     dataKey="sessionLength"
@@ -34,13 +36,25 @@ const MyLineChart = (props) => {
                     dot={false}
                     activeDot={{
                         stroke: 'white',
-                        strokeWidth: 8,
-                        r: 8,
+                        strokeWidth: 5,
+                        r: 5,
                     }}
+                />
+                <Line
+                    type="monotone"
+                    dot={false}
+                    dataKey="sessionLength"
+                    stroke="none"
+                    hidden={true}
                 />
             </LineChart>
         </div>
     );
+};
+
+//proptypes
+MyLineChart.propTypes = {
+    data: PropTypes.array.isRequired,
 };
 
 export default MyLineChart;

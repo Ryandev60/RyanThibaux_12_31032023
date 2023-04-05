@@ -3,7 +3,7 @@
         color: $grey-medium !important;
     }
 
-    .custom-tooltip {
+    .custom-tooltip-barchart {
         background-color: $red-medium;
         border-radius: 4px;
         padding: 5px;
@@ -16,7 +16,7 @@
         flex-direction: column;
     }
 
-    .custom-tooltip .label {
+    .custom-tooltip-barchart .label {
         color: $white;
         margin: 0;
         font-size: 7px;
