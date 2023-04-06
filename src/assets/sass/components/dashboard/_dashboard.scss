@@ -13,7 +13,7 @@
             'barchart barchart barchart nutrition'
             'linechart radarchart radialbarchart nutrition';
 
-        @media (max-width: 1351px) {
+        @media screen and (max-width: 1351px) {
             margin: 0 20px;
             grid-auto-columns: minmax(100px, auto);
             grid-auto-rows: minmax(100px, auto);

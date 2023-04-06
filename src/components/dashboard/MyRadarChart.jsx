@@ -43,6 +43,7 @@ const MyRadarChart = (props) => {
 };
 
 
+
 MyRadarChart.propTypes = {
     data: PropTypes.array.isRequired,
 };
