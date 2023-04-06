@@ -1,6 +1,8 @@
 .barchart-container {
     grid-area: barchart;
     margin-bottom: 40px;
+    max-width: 1000px;
+    width: 100%;
     .recharts-legend-item-text {
         color: $grey-medium !important;
     }
@@ -24,4 +26,6 @@
         font-size: 7px;
         font-family: $font1;
     }
+
+
 }

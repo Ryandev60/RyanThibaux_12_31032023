@@ -1,7 +1,10 @@
 .welcome {
-    margin-top: 68px;
+    margin-top: 40px;
     margin-bottom: 68px;
     grid-area: welcome;
+    @media screen and (max-width: 1351px) {
+        margin-bottom: 40px;
+    }
 
     h1 {
         font-size: 3rem;

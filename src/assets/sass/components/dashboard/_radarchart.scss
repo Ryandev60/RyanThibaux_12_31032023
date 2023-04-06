@@ -1,5 +1,9 @@
 .radarchart-container {
     grid-area: radarchart;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 300px;
+    width: 100%;
 }
 
 .radarchart {
