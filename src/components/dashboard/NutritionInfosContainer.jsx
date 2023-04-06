@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
 const NutritionInfosContainer = (props) => {
-    const [data, setData] = useState([]);
     const [mapData, setMapData] = useState([]);
 
     useEffect(() => {
@@ -15,7 +14,7 @@ const NutritionInfosContainer = (props) => {
         );
     }, []);
 
-    return <div>{mapData}</div>;
+    return <div className='nutrition-container '>{mapData}</div>;
 };
 
 NutritionInfosContainer.propTypes = {

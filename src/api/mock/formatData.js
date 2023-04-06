@@ -5,6 +5,15 @@ import {
     USER_PERFORMANCE,
 } from './mock';
 
+export const fetchDataHello = (userId) => {
+    const { userInfos } = USER_MAIN_DATA.find(
+        (user) => user.id === Number(userId)
+    );
+    const firstName = userInfos.firstName;
+
+    return firstName;
+};
+
 export const fetchDataActivity = (userId) => {
     const { sessions } = USER_ACTIVITY.find(
         (user) => user.userId === Number(userId)

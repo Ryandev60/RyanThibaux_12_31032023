@@ -1,0 +1,17 @@
+.welcome {
+    margin-top: 68px;
+    margin-bottom: 68px;
+    grid-area: welcome;
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 41px;
+
+        span {
+            color: $red-medium;
+        }
+    }
+    p {
+        font-size: 18px;
+    }
+}

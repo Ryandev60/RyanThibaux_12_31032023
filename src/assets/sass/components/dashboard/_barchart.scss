@@ -1,4 +1,6 @@
 .barchart-container {
+    grid-area: barchart;
+    margin-bottom: 40px;
     .recharts-legend-item-text {
         color: $grey-medium !important;
     }

@@ -1,0 +1,15 @@
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 117px auto;
+    .dashboard {
+        margin: 0 90px;
+        display: grid;
+        grid-column-gap: 30px;
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: min-content min-content min-content;
+        grid-template-areas:
+            'welcome welcome welcome welcome'
+            'barchart barchart barchart nutrition'
+            'linechart radarchart radialbarchart nutrition';
+    }
+}

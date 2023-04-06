@@ -1,0 +1,34 @@
+.nutrition-container {
+    grid-area: nutrition;
+    display: grid;
+    grid-template-columns: min-content;
+    grid-gap: 40px;
+    align-content: space-around;
+    img {
+        grid-area: icon;
+        width: 60px;
+        height: 60px;
+    }
+
+    .nutrition-info {
+        display: grid;
+        grid-template-columns: min-content min-content;
+        grid-template-rows: min-content min-content;
+        grid-template-areas: 'icon value' 'icon name';
+        grid-column-gap: 15px;
+        width: min-content;
+        height: fit-content;
+        align-items: center;
+    }
+
+    .value {
+        grid-area: value;
+        font-size: 20px;
+    }
+
+    .name {
+        grid-area: name;
+        font-size: 14px;
+        color: $grey-medium;
+    }
+}

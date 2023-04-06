@@ -6,12 +6,12 @@ const NutritionInfo = (props) => {
     console.log(data);
 
     return (
-        <div>
-            <p>{data.name}</p>
-            <p>
+        <div className='nutrition-info'>
+            <p className='value'>
                 {data.value}
                 {data.unit}
             </p>
+            <p className='name'>{data.name}</p>
             <img src={`/images/${data.img}`} alt="" />
         </div>
     );

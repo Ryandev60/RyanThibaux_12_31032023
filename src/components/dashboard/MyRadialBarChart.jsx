@@ -15,43 +15,46 @@ const MyRadialBarChart = (props) => {
 
     return (
         <div className="container-radialbarchart">
-            <RadialBarChart
-                innerRadius="70%"
-                outerRadius="90%"
-                data={data}
-                startAngle={200}
-                endAngle={-20}
-                width={258}
-                height={263}
-            >
-                <RadialBar
-                    minAngle={15}
-                    label={{
-                        fill: '#000000',
-                        position: 'center',
-                        formatter: (value) => `${value}%`,
-                    }}
-                    clockWise={true}
-                    dataKey="score"
-                    cornerRadius={10}
-                />
-                <text
-                    x="50%"
-                    y={155}
-                    textAnchor="middle"
-                    style={{ fontSize: '14px', fontWeight: 'bold' }}
+            <ResponsiveContainer width={'100%'} height={263}>
+                <RadialBarChart
+                    innerRadius="70%"
+                    outerRadius="90%"
+                    data={data}
+                    startAngle={200}
+                    endAngle={-20}
+                    width={258}
+                    height={263}
+                    className='radialbarchart'
                 >
-                    de votre
-                </text>
-                <text
-                    x="50%"
-                    y={180}
-                    textAnchor="middle"
-                    style={{ fontSize: '14px', fontWeight: 'bold' }}
-                >
-                    objectif
-                </text>
-            </RadialBarChart>
+                    <RadialBar
+                        minAngle={15}
+                        label={{
+                            fill: '#000000',
+                            position: 'center',
+                            formatter: (value) => `${value}%`,
+                        }}
+                        clockWise={true}
+                        dataKey="score"
+                        cornerRadius={10}
+                    />
+                    <text
+                        x="50%"
+                        y={155}
+                        textAnchor="middle"
+                        style={{ fontSize: '14px', fontWeight: 'bold' }}
+                    >
+                        de votre
+                    </text>
+                    <text
+                        x="50%"
+                        y={180}
+                        textAnchor="middle"
+                        style={{ fontSize: '14px', fontWeight: 'bold' }}
+                    >
+                        objectif
+                    </text>
+                </RadialBarChart>
+            </ResponsiveContainer>
         </div>
     );
 };

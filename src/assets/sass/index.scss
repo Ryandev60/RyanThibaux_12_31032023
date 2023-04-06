@@ -1,14 +1,15 @@
 @import './utils/reset';
 @import './utils/variables';
 @import './components/layout/header';
-@import './components/dashboard/main';
+@import './components/dashboard/dashboard';
 @import './components/dashboard/leftbar';
 @import './components/dashboard/barchart';
 @import './components/dashboard/linechart';
 @import './components/dashboard/radarchart';
 @import './components/dashboard/radialbarchart';
+@import './components/dashboard/nutrition-infos';
+@import './components/dashboard/welcome';
 
 * {
     font-family: $font1;
 }
-

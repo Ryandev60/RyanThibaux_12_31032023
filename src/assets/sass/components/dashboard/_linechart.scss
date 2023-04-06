@@ -1,4 +1,5 @@
 .linechart-container {
+    grid-area: linechart;
     position: relative;
     .custom-tooltip-linechart {
         background-color: $white;
