@@ -8,7 +8,7 @@ import {
     XAxis,
     YAxis,
 } from 'recharts';
-import { CustomTooltipBarChart, CustomTooltipLineChart } from './Custom';
+import { CustomTooltipLineChart } from './Custom';
 import PropTypes from 'prop-types';
 const MyLineChart = (props) => {
     const data = props.data;
@@ -35,6 +35,8 @@ const MyLineChart = (props) => {
                             fontSize: 12,
                             fontWeight: 500,
                         }}
+                        padding={{ left: 0, right: 0 }}
+                        tickMargin={10}
                     />
                     <YAxis domain={[0, 'dataMax + 50']} hide={true} />
                     <Tooltip content={<CustomTooltipLineChart />} />
