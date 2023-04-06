@@ -2,14 +2,26 @@
     display: grid;
     grid-template-columns: 117px auto;
     .dashboard {
-        margin: 0 90px;
+        padding-bottom: 70px;
+        margin: 0 70px;
         display: grid;
-        grid-column-gap: 30px;
+        grid-column-gap: 10px;
         grid-template-columns: auto auto auto auto;
-        grid-template-rows: min-content min-content min-content;
+        grid-auto-rows: minmax(100px, auto);
         grid-template-areas:
             'welcome welcome welcome welcome'
             'barchart barchart barchart nutrition'
             'linechart radarchart radialbarchart nutrition';
+
+        @media (max-width: 1351px) {
+            margin: 0 20px;
+            grid-auto-columns: minmax(100px, auto);
+            grid-auto-rows: minmax(100px, auto);
+            grid-template-areas:
+                'welcome welcome welcome welcome welcome welcome'
+                'nutrition nutrition nutrition nutrition nutrition nutrition'
+                'barchart barchart barchart barchart barchart barchart'
+                'linechart linechart radarchart radarchart radialbarchart radialbarchart';
+        }
     }
 }

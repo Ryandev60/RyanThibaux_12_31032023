@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Welcome = (props) => {
     const firstName = props.data;
     return (
-        <div className='welcome'>
+        <div className="welcome">
             <h1>
                 Bonjour <span>{firstName}</span>
             </h1>

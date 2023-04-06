@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MyBarChart from '../components/dashboard/MyBarChart';
 import LeftBar from '../components/dashboard/LeftBar';
-import Header from '../components/layout/Header';
 import {
     fetchDataActivity,
     fetchDataAverageSessions,
@@ -9,7 +8,7 @@ import {
     fetchDataScore,
     fetchDataNutritionInfo,
     fetchDataHello,
-} from '../api/mock/formatData';
+} from '../data/mock/fetchData';
 import { useParams } from 'react-router';
 import MyLineChart from '../components/dashboard/MyLineChart';
 import MyRadarChart from '../components/dashboard/MyRadarChart';
@@ -18,6 +17,7 @@ import NutritionInfosContainer from '../components/dashboard/NutritionInfosConta
 import Hello from '../components/dashboard/Hello';
 
 const Dashboard = () => {
+
     const [dataHello, setDataHello] = useState();
     const [dataBarChart, setDataBarChart] = useState();
     const [dataLineChart, setDataLineChart] = useState();
@@ -26,6 +26,7 @@ const Dashboard = () => {
     const [dataNutritionInfo, setDataNutritionInfo] = useState();
 
     const params = useParams();
+
 
     useEffect(() => {
         const fetchData = (userId) => {

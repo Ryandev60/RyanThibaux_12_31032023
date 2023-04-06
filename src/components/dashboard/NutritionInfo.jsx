@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 
 const NutritionInfo = (props) => {
     const data = props.data;
-    console.log(data);
 
     return (
-        <div className='nutrition-info'>
-            <p className='value'>
+        <div className="nutrition-info">
+            <img src={`/images/${data.img}`} alt="" />
+            <p className="value">
                 {data.value}
                 {data.unit}
             </p>
-            <p className='name'>{data.name}</p>
-            <img src={`/images/${data.img}`} alt="" />
+            <p className="name">{data.name}</p>
         </div>
     );
 };

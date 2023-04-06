@@ -4,6 +4,14 @@
     grid-template-columns: min-content;
     grid-gap: 40px;
     align-content: space-around;
+
+    @media (max-width: 1351px) {
+        grid-gap: 0;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-content: space-between;
+        margin-bottom: 40px;
+    }
+
     img {
         grid-area: icon;
         width: 60px;

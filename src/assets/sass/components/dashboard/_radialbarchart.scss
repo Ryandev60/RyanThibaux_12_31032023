@@ -1,5 +1,7 @@
 .container-radialbarchart {
     grid-area: radialbarchart;
+    border-radius: 10px;
+    overflow: hidden;
 
     .radialbarchart {
         background-color: #fbfbfb;
