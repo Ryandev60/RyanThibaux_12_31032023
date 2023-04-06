@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import MyBarChart from '../components/dashboard/MyBarChart';
 import LeftBar from '../components/dashboard/LeftBar';
 import {
+    fetchDataHello,
     fetchDataActivity,
     fetchDataAverageSessions,
     fetchDataPerformance,
     fetchDataScore,
     fetchDataNutritionInfo,
-    fetchDataHello,
-} from '../data/mock/fetchData';
+} from '../data/api/fetchData';
 import { useParams } from 'react-router';
 import MyLineChart from '../components/dashboard/MyLineChart';
 import MyRadarChart from '../components/dashboard/MyRadarChart';
@@ -17,7 +17,6 @@ import NutritionInfosContainer from '../components/dashboard/NutritionInfosConta
 import Hello from '../components/dashboard/Hello';
 
 const Dashboard = () => {
-
     const [dataHello, setDataHello] = useState();
     const [dataBarChart, setDataBarChart] = useState();
     const [dataLineChart, setDataLineChart] = useState();
@@ -27,15 +26,14 @@ const Dashboard = () => {
 
     const params = useParams();
 
-
     useEffect(() => {
-        const fetchData = (userId) => {
-            setDataHello(fetchDataHello(userId));
-            setDataBarChart(fetchDataActivity(userId));
-            setDataLineChart(fetchDataAverageSessions(userId));
-            setDataRadarChart(fetchDataPerformance(userId));
-            setDataRadialBarChart(fetchDataScore(userId));
-            setDataNutritionInfo(fetchDataNutritionInfo(userId));
+        const fetchData = async (userId) => {
+            setDataHello(await fetchDataHello(userId));
+            setDataBarChart(await fetchDataActivity(userId));
+            setDataLineChart(await fetchDataAverageSessions(userId));
+            setDataRadarChart(await fetchDataPerformance(userId));
+            setDataRadialBarChart(await fetchDataScore(userId));
+            setDataNutritionInfo(await fetchDataNutritionInfo(userId));
         };
         fetchData(params.userId);
     }, []);
