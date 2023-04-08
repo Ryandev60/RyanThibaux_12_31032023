@@ -50,6 +50,14 @@ const MyRadialBarChart = (props) => {
                     </text>
 
                     <text
+                        x={30}
+                        y={30}
+                        textAnchor="middle"
+                        style={{ fontSize: '15px' }}
+                    >
+                        Score
+                    </text>
+                    <text
                         x="50%"
                         y={140}
                         textAnchor="middle"

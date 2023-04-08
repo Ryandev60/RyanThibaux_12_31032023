@@ -28,7 +28,8 @@ const MyRadarChart = (props) => {
                     <PolarAngleAxis
                         dataKey="kind"
                         tick={{ fill: 'white', fontSize: 12 }}
-                        transform='translate(0, 3)'
+
+                        transform="translate(0, 3)"
                     />
                     <Radar
                         name="radar"
