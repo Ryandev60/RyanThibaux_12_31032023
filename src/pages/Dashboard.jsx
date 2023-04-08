@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MyBarChart from '../components/dashboard/MyBarChart';
 import LeftBar from '../components/dashboard/LeftBar';
-import Header from '../components/layout/Header';
 import {
     fetchDataActivity,
     fetchDataAverageSessions,
@@ -28,13 +27,13 @@ const Dashboard = () => {
     const params = useParams();
 
     useEffect(() => {
-        const fetchData = (userId) => {
-            setDataHello(fetchDataHello(userId));
-            setDataBarChart(fetchDataActivity(userId));
-            setDataLineChart(fetchDataAverageSessions(userId));
-            setDataRadarChart(fetchDataPerformance(userId));
-            setDataRadialBarChart(fetchDataScore(userId));
-            setDataNutritionInfo(fetchDataNutritionInfo(userId));
+        const fetchData = async (userId) => {
+            setDataHello(await fetchDataHello(userId));
+            setDataBarChart(await fetchDataActivity(userId));
+            setDataLineChart(await fetchDataAverageSessions(userId));
+            setDataRadarChart(await fetchDataPerformance(userId));
+            setDataRadialBarChart(await fetchDataScore(userId));
+            setDataNutritionInfo(await fetchDataNutritionInfo(userId));
         };
         fetchData(params.userId);
     }, []);
