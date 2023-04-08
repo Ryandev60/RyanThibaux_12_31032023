@@ -28,6 +28,7 @@ const MyRadarChart = (props) => {
                     <PolarAngleAxis
                         dataKey="kind"
                         tick={{ fill: 'white', fontSize: 12 }}
+
                         transform="translate(0, 3)"
                     />
                     <Radar
@@ -41,6 +42,8 @@ const MyRadarChart = (props) => {
         </div>
     );
 };
+
+
 
 MyRadarChart.propTypes = {
     data: PropTypes.array.isRequired,

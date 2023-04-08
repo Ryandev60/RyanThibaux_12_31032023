@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import MyBarChart from '../components/dashboard/MyBarChart';
 import LeftBar from '../components/dashboard/LeftBar';
 import {
+    fetchDataHello,
     fetchDataActivity,
     fetchDataAverageSessions,
     fetchDataPerformance,
     fetchDataScore,
     fetchDataNutritionInfo,
-    fetchDataHello,
-} from '../api/mock/formatData';
+} from '../data/api/fetchData';
 import { useParams } from 'react-router';
 import MyLineChart from '../components/dashboard/MyLineChart';
 import MyRadarChart from '../components/dashboard/MyRadarChart';

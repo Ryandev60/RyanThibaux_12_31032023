@@ -39,6 +39,16 @@ const MyRadialBarChart = (props) => {
                         dataKey="score"
                         cornerRadius={10}
                     />
+
+                    <text
+                        x={30}
+                        y={30}
+                        textAnchor="middle"
+                        style={{ fontSize: '15px' }}
+                    >
+                        Score
+                    </text>
+
                     <text
                         x={30}
                         y={30}
@@ -69,7 +79,6 @@ const MyRadialBarChart = (props) => {
     );
 };
 
-//propTypes
 MyRadialBarChart.propTypes = {
     data: PropTypes.array.isRequired,
 };
