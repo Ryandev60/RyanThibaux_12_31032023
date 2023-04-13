@@ -1,13 +1,16 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const ChoiceUser = () => {
-  return (
-    <div>
-        <NavLink to="/dashboard/12">user12</NavLink>
-        <NavLink to="/dashboard/18">user18</NavLink>
-    </div>
-  )
-}
+    return (
+        <div className="choiceuser">
+            <h1>Choisir un exemple d'utilisateur :</h1>
+            <div className="choiceuser-buttons">
+                <NavLink to="/dashboard/12">Karl</NavLink>
+                <NavLink to="/dashboard/18">Cécilia</NavLink>
+            </div>
+        </div>
+    );
+};
 
-export default ChoiceUser
+export default ChoiceUser;

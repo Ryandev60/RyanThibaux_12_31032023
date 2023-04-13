@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -8,10 +9,19 @@ const Header = () => {
                     <li>
                         <img src="../images/logo.png" alt="" /> SportSee
                     </li>
-                    <li>Accueil</li>
-                    <li>Profil</li>
-                    <li>Réglage</li>
-                    <li>Communauté</li>
+                    <li>
+                        <NavLink to="/">Accueil</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/">Profil</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/">Réglage</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/">Communauté</NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>
