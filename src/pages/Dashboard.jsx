@@ -8,7 +8,7 @@ import {
     fetchDataPerformance,
     fetchDataScore,
     fetchDataNutritionInfo,
-} from '../data/mock/fetchData';
+} from '../data/api/fetchData';
 import { useParams } from 'react-router';
 import { Navigate } from 'react-router-dom';
 import MyLineChart from '../components/dashboard/MyLineChart';
@@ -16,6 +16,7 @@ import MyRadarChart from '../components/dashboard/MyRadarChart';
 import MyRadialBarChart from '../components/dashboard/MyRadialBarChart';
 import NutritionInfosContainer from '../components/dashboard/NutritionInfosContainer';
 import Hello from '../components/dashboard/Hello';
+
 
 const Dashboard = () => {
     const [dataHello, setDataHello] = useState();
@@ -27,11 +28,14 @@ const Dashboard = () => {
     const [error, setError] = useState(false);
 
     const params = useParams();
+    const userId = params.userId;
+
     useEffect(() => {
         const fetchData = async (userId) => {
             try {
                 setDataHello(await fetchDataHello(userId));
                 setDataBarChart(await fetchDataActivity(userId));
+                console.log(fetchDataActivity(userId));
                 setDataLineChart(await fetchDataAverageSessions(userId));
                 setDataRadarChart(await fetchDataPerformance(userId));
                 setDataRadialBarChart(await fetchDataScore(userId));
@@ -40,7 +44,7 @@ const Dashboard = () => {
                 setError(true);
             }
         };
-        fetchData(params.userId);
+        fetchData(userId)
     }, []);
 
     return (

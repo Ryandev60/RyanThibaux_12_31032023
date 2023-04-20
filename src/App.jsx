@@ -5,6 +5,11 @@ import Dashboard from './pages/Dashboard';
 import Header from './components/layout/Header';
 import Error from './pages/Error';
 
+/**
+ * 
+ * @returns {JSX.Element}
+ */
+
 function App() {
     return (
         <div className="App">

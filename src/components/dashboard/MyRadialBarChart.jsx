@@ -34,8 +34,6 @@ const MyRadialBarChart = (props) => {
                             formatter: (value) => `${value}%`,
                             fontSize: '26px',
                             transform: 'translate(0, -20)',
-                            fontSize: '26px',
-                            transform: 'translate(0, -20)',
                         }}
                         clockWise={true}
                         dataKey="score"
