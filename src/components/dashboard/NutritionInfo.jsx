@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * NutritionInfo component
+ * @description - Component to display the nutrition info
+ * @returns {JSX.Element} - NutritionInfo component
+ * @param {Object} props - Props
+ * @param {Object} props.data - Data
+ * */
+
 const NutritionInfo = (props) => {
     const data = props.data;
 

@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * LeftBar component
+ * @description - Component to display the left bar
+ * @returns {JSX.Element} - LeftBar component
+ * */
+
 const LeftBar = () => {
     return (
         <aside className="leftbar">

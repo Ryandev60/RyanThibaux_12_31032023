@@ -1,6 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+/**
+ * Header component
+ * @description - Component to display the header
+ * @returns {JSX.Element} - Header component
+ * */
+
 const Header = () => {
     return (
         <header>

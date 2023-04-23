@@ -10,8 +10,15 @@ import {
     YAxis,
 } from 'recharts';
 import PropTypes from 'prop-types';
-
 import { customLegendBarChart, CustomTooltipBarChart } from './Custom';
+
+/**
+ * MyBarChart component
+ * @description - Component to display the bar chart
+ * @returns {JSX.Element} - MyBarChart component
+ * @param {Object} props - Props
+ * @param {Array} props.data - Data to display
+ * */
 
 const MyBarChart = (props) => {
     const data = props.data;

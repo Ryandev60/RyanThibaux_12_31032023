@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Welcome = (props) => {
+const Hello = (props) => {
     const firstName = props.data;
     return (
         <div className="welcome">
@@ -17,4 +17,4 @@ Welcome.propTypes = {
     data: PropTypes.string.isRequired,
 };
 
-export default Welcome;
+export default Hello;

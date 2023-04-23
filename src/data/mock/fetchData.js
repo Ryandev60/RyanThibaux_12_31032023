@@ -8,7 +8,7 @@ import {
 /**
  * @function fetchDataHello
  * @description Fetch data from mock and return the first name of the user with the given ID from the USER_MAIN_DATA array.
- * @param {number} userId - The ID of the user to fetch the first name for.
+ * @param {string} userId - The ID of the user to fetch the first name for.
  * @returns {Promise<string>} A Promise that resolves with the first name of the user as a string.
  * @throws {Error} An error is thrown if no user is found with the given ID.
  * @example
@@ -33,7 +33,7 @@ export const fetchDataHello = (userId) => {
 /**
  * @function fetchDataActivity
  * @description Fetch data from mock and return the activity data formatted of the user with the given ID from the USER_ACTIVITY array.
- * @param {number} userId - The ID of the user to fetch the activity data for.
+ * @param {string} userId - The ID of the user to fetch the activity data for.
  * @returns {Promise<Array<Object>>} A Promise that resolves with the activity data of the user as an array.
  * @throws {Error} An error is thrown if no user is found with the given ID.
  * @example
@@ -62,7 +62,7 @@ export const fetchDataActivity = (userId) => {
 /**
  * @function fetchDataAverageSessions
  * @description Fetch data from mock and return the average sessions data formatted of the user with the given ID from the USER_AVERAGE_SESSIONS array.
- * @param {number} userId - The ID of the user to fetch the average sessions data for.
+ * @param {string} userId - The ID of the user to fetch the average sessions data for.
  * @returns {Promise<Array<Object>>} A Promise that resolves with the average sessions data of the user as an array of objects.
  * @throws {Error} An error is thrown if no user is found with the given ID.
  * @example
@@ -92,6 +92,17 @@ export const fetchDataAverageSessions = (userId) => {
         throw error;
     }
 };
+
+/** 
+ * @function fetchDataPerformance
+ * @description Fetch data from mock and return the performance data formatted of the user with the given ID from the USER_PERFORMANCE array.
+ * @param {string} userId - The ID of the user to fetch the performance data for.
+ * @returns {Promise<Array<Object>>} A Promise that resolves with the performance data of the user as an array of objects.
+ * @throws {Error} An error is thrown if no user is found with the given ID.
+ * @example
+ * fetchDataPerformance(12).then((firstName) => console.log(firstName));
+ * Returns [{kind: "Cardio",score: 80,fill: "#ff0000"},{kind: "Energie",score: 100,fill: "#ff0000"},...] (array of objects)
+*/
 
 export const fetchDataPerformance = (userId) => {
     try {
@@ -125,7 +136,7 @@ export const fetchDataPerformance = (userId) => {
 /**
  * @function fetchDataScore
  * @description Fetch data from mock and return the score data formatted of the user with the given ID from the USER_MAIN_DATA array.
- * @param {number} userId - The ID of the user to fetch the score data for.
+ * @param {string} userId - The ID of the user to fetch the score data for.
  * @returns {Promise<Array<Object>>} A Promise that resolves with the score data of the user as an array of objects.
  * @throws {Error} An error is thrown if no user is found with the given ID.
  * @example
@@ -168,7 +179,7 @@ export const fetchDataScore = (userId) => {
 /**
  * @function fetchDataNutritionInfo
  * @description Fetch data from mock and return the nutrition info data formatted of the user with the given ID from the USER_MAIN_DATA array.
- * @param {number} userId - The ID of the user to fetch the nutrition info data for.
+ * @param {string} userId - The ID of the user to fetch the nutrition info data for.
  * @returns {Promise<Array<Object>>} A Promise that resolves with the nutrition info data of the user as an array of objects.
  * @throws {Error} An error is thrown if no user is found with the given ID.
  * @example

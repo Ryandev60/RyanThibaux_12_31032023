@@ -8,6 +8,12 @@ import {
 } from 'recharts';
 import PropTypes from 'prop-types';
 
+/**
+ * MyRadarChart component
+ * @description - Component to display the radar chart
+ * @returns {JSX.Element} - MyRadarChart component
+ * */
+
 const MyRadarChart = (props) => {
     const data = props.data;
     return (

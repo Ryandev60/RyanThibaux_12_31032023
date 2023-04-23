@@ -10,6 +10,15 @@ import {
 } from 'recharts';
 import { CustomTooltipLineChart } from './Custom';
 import PropTypes from 'prop-types';
+
+/**
+ * MyLineChart component
+ * @description - Component to display the line chart
+ * @returns {JSX.Element} - MyLineChart component
+ * @param {Object} props - Props
+ * @param {Array} props.data - Data to display
+ * */
+
 const MyLineChart = (props) => {
     const data = props.data;
     return (

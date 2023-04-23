@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import MyBarChart from '../components/dashboard/MyBarChart';
-import LeftBar from '../components/dashboard/LeftBar';
+import { useParams } from 'react-router';
+import { Navigate } from 'react-router-dom';
 import {
     fetchDataHello,
     fetchDataActivity,
@@ -9,14 +9,20 @@ import {
     fetchDataScore,
     fetchDataNutritionInfo,
 } from '../data/api/fetchData';
-import { useParams } from 'react-router';
-import { Navigate } from 'react-router-dom';
+import LeftBar from '../components/dashboard/LeftBar';
+import Hello from '../components/dashboard/Hello';
+import MyBarChart from '../components/dashboard/MyBarChart';
 import MyLineChart from '../components/dashboard/MyLineChart';
 import MyRadarChart from '../components/dashboard/MyRadarChart';
 import MyRadialBarChart from '../components/dashboard/MyRadialBarChart';
 import NutritionInfosContainer from '../components/dashboard/NutritionInfosContainer';
-import Hello from '../components/dashboard/Hello';
 
+/** 
+ * Dashboard component
+ * @description - Parent component of LeftBar, Hello, MyBarChart, MyLineChart, MyRadarChart, MyRadialBarChart, NutritionInfosContainer
+ * @param {string} userId - user id
+ * @returns {JSX.Element} - Dashboard component
+ * */
 
 const Dashboard = () => {
     const [dataHello, setDataHello] = useState();
@@ -35,7 +41,6 @@ const Dashboard = () => {
             try {
                 setDataHello(await fetchDataHello(userId));
                 setDataBarChart(await fetchDataActivity(userId));
-                console.log(fetchDataActivity(userId));
                 setDataLineChart(await fetchDataAverageSessions(userId));
                 setDataRadarChart(await fetchDataPerformance(userId));
                 setDataRadialBarChart(await fetchDataScore(userId));
@@ -44,7 +49,7 @@ const Dashboard = () => {
                 setError(true);
             }
         };
-        fetchData(userId)
+        fetchData(userId);
     }, []);
 
     return (

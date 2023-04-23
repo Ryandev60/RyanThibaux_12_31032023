@@ -3,12 +3,15 @@ import React from 'react';
 import {
     RadialBarChart,
     RadialBar,
-    Legend,
-    Tooltip,
     ResponsiveContainer,
 } from 'recharts';
-import { renderCustomLabel } from './Custom';
 import PropTypes from 'prop-types';
+
+/**
+ * MyRadialBarChart component
+ * @description - Component to display the radial bar chart
+ * @returns {JSX.Element} - MyRadialBarChart component
+ * */
 
 const MyRadialBarChart = (props) => {
     const { data } = props;
