@@ -10,12 +10,14 @@ import PropTypes from 'prop-types';
 /**
  * MyRadialBarChart component
  * @description - Component to display the radial bar chart
+ * @param {Object} props - Props
+ * @param {Array} props.data - Data
  * @returns {JSX.Element} - MyRadialBarChart component
  * */
 
 const MyRadialBarChart = (props) => {
     const { data } = props;
-
+    console.log(data)
     return (
         <div className="container-radialbarchart">
             <ResponsiveContainer width={'100%'} height={263}>

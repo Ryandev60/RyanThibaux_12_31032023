@@ -2,6 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 
+/**
+ * ChoiceUser component
+ * @description - Component to choose an example user
+ * @returns {JSX.Element} - ChoiceUser component
+ * */
+
 const ChoiceUser = () => {
     return (
         <div className="choiceuser">
@@ -13,5 +19,4 @@ const ChoiceUser = () => {
         </div>
     );
 };
-
 export default ChoiceUser;

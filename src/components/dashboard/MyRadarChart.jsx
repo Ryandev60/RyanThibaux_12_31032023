@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 /**
  * MyRadarChart component
  * @description - Component to display the radar chart
+ * @param {Object} props - Props
+ * @param {Array} props.data - Data
  * @returns {JSX.Element} - MyRadarChart component
  * */
 

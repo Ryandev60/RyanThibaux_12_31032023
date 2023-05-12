@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
+/**
+ * Hello component
+ * @description - Component to display the user's first name
+ * @param {string} data - User's first name
+ * @returns {JSX.Element}
+ * */
+
 const Hello = (props) => {
     const firstName = props.data;
     return (
@@ -13,7 +21,7 @@ const Hello = (props) => {
     );
 };
 
-Welcome.propTypes = {
+Hello.propTypes = {
     data: PropTypes.string.isRequired,
 };
 

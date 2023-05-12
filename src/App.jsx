@@ -6,9 +6,10 @@ import Header from './components/layout/Header';
 import Error from './pages/Error';
 
 /**
- * 
- * @returns {JSX.Element}
- */
+ * App component
+ * @description - Parent component of Header, ChoiceUser, Dashboard, Error
+ * @returns {JSX.Element} - App component
+ * */
 
 function App() {
     return (

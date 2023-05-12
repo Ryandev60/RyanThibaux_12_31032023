@@ -4,9 +4,10 @@ import App from './App'
 import './assets/sass/index.scss'
 
 /**
- * 
- * @returns {JSX.Element}
- */
+ * Main component
+ * @description - Parent component of App
+ * @returns {JSX.Element} - Main component
+ * */
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

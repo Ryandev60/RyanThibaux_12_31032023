@@ -17,10 +17,9 @@ import MyRadarChart from '../components/dashboard/MyRadarChart';
 import MyRadialBarChart from '../components/dashboard/MyRadialBarChart';
 import NutritionInfosContainer from '../components/dashboard/NutritionInfosContainer';
 
-/** 
+/**
  * Dashboard component
  * @description - Parent component of LeftBar, Hello, MyBarChart, MyLineChart, MyRadarChart, MyRadialBarChart, NutritionInfosContainer
- * @param {string} userId - user id
  * @returns {JSX.Element} - Dashboard component
  * */
 

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NutritionInfo from './NutritionInfo';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 
 /**
  * NutritionInfosContainer component
@@ -12,11 +11,12 @@ import { useEffect } from 'react';
  * */
 
 const NutritionInfosContainer = (props) => {
+    const data = props.data;
     const [mapData, setMapData] = useState([]);
 
     useEffect(() => {
         setMapData(
-            props.data.map((item) => {
+            data.map((item) => {
                 return <NutritionInfo data={item} key={item.name} />;
             })
         );
