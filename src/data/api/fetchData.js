@@ -1,4 +1,6 @@
 import axios from 'axios';
+import {DataActivity, DataAverageSessions, DataHello, DataPerformance, DataScore, DataNutrition} from "../../models/index.js";
+import {extractDay} from "../../utils/utils.js";
 
 const url = 'http://localhost:3000/user';
 
@@ -14,15 +16,16 @@ const url = 'http://localhost:3000/user';
  */
 
 export const fetchDataHello = async (userId) => {
-    console.log(userId);
     try {
         const response = await axios.get(`${url}/${userId}`);
-        return response.data.data.userInfos.firstName;
+        const data = response.data.data.userInfos.firstName;
+        return new DataHello(data);
     } catch (error) {
         console.error(error);
         throw error;
     }
 };
+
 
 /**
  * @function fetchDataActivity
@@ -31,22 +34,20 @@ export const fetchDataHello = async (userId) => {
  * @returns {Promise<Array<Object>>} A Promise that resolves with the activity data of the user as an array.
  * @throws {Error} An error is thrown if no user is found with the given ID.
  * @example
-    fetchDataActivity(12).then((firstName) => console.log(firstName));
-    Returns [{day: 1,kilogram: 80,calories: 240},day: 2,kilogram: 80,calories: 220},...] (array of objects)
+ fetchDataActivity(12).then((firstName) => console.log(firstName));
+ Returns [{day: 1,kilogram: 80,calories: 240},day: 2,kilogram: 80,calories: 220},...] (array of objects)
  */
 
 export const fetchDataActivity = async (userId) => {
     try {
         const response = await axios.get(`${url}/${userId}/activity`);
         const formattedDataActivity = response.data.data.sessions.map(
-            (session) => ({
-                ...session,
-                day: new Date(session.day).getDate(),
-            })
-        );
+            (session) => (
+                new DataActivity(session.calories, session.kilogram, extractDay(session.day)
+                )
+            ));
         return formattedDataActivity;
     } catch (error) {
-        console.error(error);
         throw error;
     }
 };
@@ -69,10 +70,7 @@ export const fetchDataAverageSessions = async (userId) => {
         const formattedDataAverageSessions = response.data.data.sessions.map(
             (session) => {
                 const day = days[session.day - 1];
-                return {
-                    ...session,
-                    day: day,
-                };
+                return new DataAverageSessions(day, session.sessionLength);
             }
         );
         return formattedDataAverageSessions;
@@ -82,7 +80,7 @@ export const fetchDataAverageSessions = async (userId) => {
     }
 };
 
-/** 
+/**
  * @function fetchDataPerformance
  * @description Fetch data from api and return the performance data formatted of the user with the given ID from the USER_PERFORMANCE array.
  * @param {string} userId - The ID of the user to fetch the performance data for.
@@ -91,7 +89,7 @@ export const fetchDataAverageSessions = async (userId) => {
  * @example
  * fetchDataPerformance(12).then((firstName) => console.log(firstName));
  * Returns [{kind: "Cardio",score: 80,fill: "#ff0000"},{kind: "Energie",score: 100,fill: "#ff0000"},...] (array of objects)
-*/
+ */
 
 export const fetchDataPerformance = async (userId) => {
     try {
@@ -105,10 +103,10 @@ export const fetchDataPerformance = async (userId) => {
             'Intensité',
         ];
         const formattedDataPerformance = response.data.data.data.map(
-            (data) => ({
-                ...data,
-                kind: translatedKind[data.kind - 1],
-            })
+            (data) => {
+                const kind = translatedKind[data.kind - 1];
+                return new DataPerformance(kind, data.value,)
+            }
         );
         return formattedDataPerformance;
     } catch (error) {
@@ -135,23 +133,16 @@ export const fetchDataPerformance = async (userId) => {
 export const fetchDataScore = async (userId) => {
     try {
         const response = await axios.get(`${url}/${userId}`);
-        const maxScore = 100;
         const userScore = response.data.data.todayScore
             ? response.data.data.todayScore
             : response.data.data.score;
         const userScoreToPercent = userScore * 100;
 
         const formattedDataScore = [
-            {
-                score: userScoreToPercent,
-                fill: '#ff0000',
-            },
-            {
-                score: maxScore,
-                display: 'none',
-            },
+            new DataScore(userScoreToPercent, '#ff0000')
         ];
-        return formattedDataScore;
+
+        return formattedDataScore
     } catch (error) {
         console.error(error);
         throw error;
@@ -178,30 +169,10 @@ export const fetchDataNutritionInfo = async (userId) => {
         const response = await axios.get(`${url}/${userId}`);
         const value = response.data.data.keyData;
         const formattedDataNutrition = [
-            {
-                name: 'Calories',
-                value: value.calorieCount,
-                img: 'calories.png',
-                unit: 'kCal',
-            },
-            {
-                name: 'Protéines',
-                value: value.proteinCount,
-                img: 'proteins.png',
-                unit: 'g',
-            },
-            {
-                name: 'Glucides',
-                value: value.carbohydrateCount,
-                img: 'carbohydrates.png',
-                unit: 'g',
-            },
-            {
-                name: 'Lipides',
-                value: value.lipidCount,
-                img: 'lipids.png',
-                unit: 'g',
-            },
+            new DataNutrition('Calories', value.calorieCount, 'calories.png', 'kCal'),
+            new DataNutrition('Protéines', value.proteinCount, 'proteins.png', 'g'),
+            new DataNutrition('Glucides', value.carbohydrateCount, 'carbohydrates.png', 'g'),
+            new DataNutrition('Lipides', value.lipidCount, 'lipids.png', 'g'),
         ];
         return formattedDataNutrition;
     } catch (error) {

@@ -22,7 +22,6 @@ import { customLegendBarChart, CustomTooltipBarChart } from './Custom';
 
 const MyBarChart = (props) => {
     const data = props.data;
-
     return (
         <div className="barchart-container">
             <h2>Activité quotidienne</h2>

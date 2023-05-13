@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * */
 
 const Hello = (props) => {
-    const firstName = props.data;
+    const firstName = props.data.firstName
     return (
         <div className="welcome">
             <h1>
@@ -22,7 +22,7 @@ const Hello = (props) => {
 };
 
 Hello.propTypes = {
-    data: PropTypes.string.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default Hello;

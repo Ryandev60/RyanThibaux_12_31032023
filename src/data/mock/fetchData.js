@@ -4,6 +4,15 @@ import {
     USER_AVERAGE_SESSIONS,
     USER_PERFORMANCE,
 } from './mock';
+import {
+    DataActivity,
+    DataAverageSessions,
+    DataHello,
+    DataNutrition,
+    DataPerformance,
+    DataScore
+} from "../../models/index.js";
+import {extractDay} from "../../utils/utils.js";
 
 /**
  * @function fetchDataHello
@@ -18,12 +27,11 @@ import {
 
 export const fetchDataHello = (userId) => {
     try {
-        const { userInfos } = USER_MAIN_DATA.find(
+        const {userInfos} = USER_MAIN_DATA.find(
             (user) => user.id === Number(userId)
         );
         const firstName = userInfos.firstName;
-
-        return firstName;
+        return new DataHello(firstName);
     } catch (error) {
         console.log(error);
         throw error;
@@ -37,20 +45,19 @@ export const fetchDataHello = (userId) => {
  * @returns {Promise<Array<Object>>} A Promise that resolves with the activity data of the user as an array.
  * @throws {Error} An error is thrown if no user is found with the given ID.
  * @example
-    fetchDataActivity(12).then((firstName) => console.log(firstName));
-    Returns [{day: 1,kilogram: 80,calories: 240},day: 2,kilogram: 80,calories: 220},...] (array of objects)
+ fetchDataActivity(12).then((firstName) => console.log(firstName));
+ Returns [{day: 1,kilogram: 80,calories: 240},day: 2,kilogram: 80,calories: 220},...] (array of objects)
  */
 
 export const fetchDataActivity = (userId) => {
     try {
-        const { sessions } = USER_ACTIVITY.find(
+        const {sessions} = USER_ACTIVITY.find(
             (user) => user.userId === Number(userId)
         );
 
-        const formattedDataActivity = sessions.map((session) => ({
-            ...session,
-            day: new Date(session.day).getDate(),
-        }));
+        const formattedDataActivity = sessions.map((session) => (
+            new DataActivity(session.calories, session.kilogram, extractDay(session.day)
+            )));
 
         return formattedDataActivity;
     } catch (error) {
@@ -74,18 +81,14 @@ export const fetchDataAverageSessions = (userId) => {
     const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
     try {
-        const { sessions } = USER_AVERAGE_SESSIONS.find(
+        const {sessions} = USER_AVERAGE_SESSIONS.find(
             (user) => user.userId === Number(userId)
         );
 
         const formattedDataAverageSessions = sessions.map((session) => {
             const day = days[session.day - 1];
-            return {
-                ...session,
-                day: day,
-            };
+            return new DataAverageSessions(day, session.sessionLength);
         });
-
         return formattedDataAverageSessions;
     } catch (error) {
         console.log(error);
@@ -93,7 +96,7 @@ export const fetchDataAverageSessions = (userId) => {
     }
 };
 
-/** 
+/**
  * @function fetchDataPerformance
  * @description Fetch data from mock and return the performance data formatted of the user with the given ID from the USER_PERFORMANCE array.
  * @param {string} userId - The ID of the user to fetch the performance data for.
@@ -102,11 +105,11 @@ export const fetchDataAverageSessions = (userId) => {
  * @example
  * fetchDataPerformance(12).then((firstName) => console.log(firstName));
  * Returns [{kind: "Cardio",score: 80,fill: "#ff0000"},{kind: "Energie",score: 100,fill: "#ff0000"},...] (array of objects)
-*/
+ */
 
 export const fetchDataPerformance = (userId) => {
     try {
-        const { data } = USER_PERFORMANCE.find(
+        const {data} = USER_PERFORMANCE.find(
             (user) => user.userId === Number(userId)
         );
 
@@ -120,10 +123,8 @@ export const fetchDataPerformance = (userId) => {
         ];
 
         const formattedDataPerformance = data.map((data) => {
-            return {
-                ...data,
-                kind: translatedKind[data.kind - 1],
-            };
+            const kind = translatedKind[data.kind - 1];
+            return new DataPerformance(kind, data.value,)
         });
 
         return formattedDataPerformance;
@@ -150,7 +151,7 @@ export const fetchDataPerformance = (userId) => {
 
 export const fetchDataScore = (userId) => {
     try {
-        const { todayScore, score } = USER_MAIN_DATA.find(
+        const {todayScore, score} = USER_MAIN_DATA.find(
             (user) => user.id === Number(userId)
         );
 
@@ -159,16 +160,8 @@ export const fetchDataScore = (userId) => {
         const userScore = todayScore ? todayScore : score;
         const userScoreToPercent = userScore * 100;
         const formattedDataScore = [
-            {
-                score: userScoreToPercent,
-                fill: '#ff0000',
-            },
-            {
-                score: maxScore,
-                display: 'none',
-            },
+            new DataScore(userScoreToPercent, '#ff0000')
         ];
-
         return formattedDataScore;
     } catch (error) {
         console.log(error);
@@ -193,34 +186,16 @@ export const fetchDataScore = (userId) => {
 
 export const fetchDataNutritionInfo = (userId) => {
     try {
-        const { keyData } = USER_MAIN_DATA.find(
+        const {keyData} = USER_MAIN_DATA.find(
             (user) => user.id === Number(userId)
         );
+        const value = keyData;
+
         const formattedDataNutrition = [
-            {
-                name: 'Calories',
-                value: keyData.calorieCount,
-                img: 'calories.png',
-                unit: 'kCal',
-            },
-            {
-                name: 'Protéines',
-                value: keyData.proteinCount,
-                img: 'proteins.png',
-                unit: 'g',
-            },
-            {
-                name: 'Glucides',
-                value: keyData.carbohydrateCount,
-                img: 'carbohydrates.png',
-                unit: 'g',
-            },
-            {
-                name: 'Lipides',
-                value: keyData.lipidCount,
-                img: 'lipids.png',
-                unit: 'g',
-            },
+            new DataNutrition('Calories', value.calorieCount, 'calories.png', 'kCal'),
+            new DataNutrition('Protéines', value.proteinCount, 'proteins.png', 'g'),
+            new DataNutrition('Glucides', value.carbohydrateCount, 'carbohydrates.png', 'g'),
+            new DataNutrition('Lipides', value.lipidCount, 'lipids.png', 'g'),
         ];
         return formattedDataNutrition;
     } catch (error) {

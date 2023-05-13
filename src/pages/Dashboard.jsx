@@ -8,7 +8,7 @@ import {
     fetchDataPerformance,
     fetchDataScore,
     fetchDataNutritionInfo,
-} from '../data/api/fetchData';
+} from '../data/mock/fetchData';
 import LeftBar from '../components/dashboard/LeftBar';
 import Hello from '../components/dashboard/Hello';
 import MyBarChart from '../components/dashboard/MyBarChart';
